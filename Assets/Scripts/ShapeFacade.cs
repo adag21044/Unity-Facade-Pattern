@@ -40,4 +40,24 @@ public class ShapeFacade : MonoBehaviour
             shapeManager.ChangeShapeColor(shape, color);
         }
     }
+
+    public void ApplyRandomTransformation(IShape shape)
+    {
+        if (shapeManager == null)
+        {
+            Debug.LogError("ShapeManager is not assigned in ShapeFacade!");
+            return;
+        }
+
+        Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+        float randomSpeed = Random.Range(1f, 10f);
+        float randomRotationSpeed = Random.Range(30f, 200f);
+        Color randomColor = Random.ColorHSV();
+
+        Debug.Log($"Applying random transformation: Move({randomDirection}, {randomSpeed}), Rotate(Vector3.up, {randomRotationSpeed}), Color({randomColor})");
+
+        shapeManager.MoveShape(shape, randomDirection, randomSpeed);
+        shapeManager.RotateShape(shape, Vector3.up, randomRotationSpeed);
+        shapeManager.ChangeShapeColor(shape, randomColor);
+    }
 }

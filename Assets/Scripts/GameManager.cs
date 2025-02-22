@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        shapeFacade.MoveShape(cubeController, Vector3.forward, 5f);
-        shapeFacade.RotateShape(cubeController, Vector3.up, 100f);
-        shapeFacade.ChangeShapeColor(cubeController, Color.red);
+        shapeFacade.ApplyRandomTransformation(cubeController);
     }
 }
